@@ -1,0 +1,96 @@
+
+<div th:include="header"></div>
+
+<div class="breadcome-area">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="breadcome-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<div class="breadcomb-wp">
+								<div class="breadcomb-icon">
+									<i class="fa fa-home" style="font-size: 30px;"></i>
+								</div>
+								<div class="breadcomb-ctn">
+									<h2>User List</h2>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="product-status mg-b-30">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="product-status-wrap">
+					<h4>User List</h4>
+					<div class="add-product">
+						<a href="product-edit.html">Add Product</a>
+					</div>
+					<table>
+						<tr>
+							<th>ID</th>
+							<th>UserName</th>
+							<th>FirstName</th>
+							<th>LastName</th>
+							<th>Email Id</th>
+							<th>View</th>
+							<th>Action</th>
+
+						</tr>
+						<tr th:each="user,status:${userinfo}">
+							<td class="align-middle"
+								th:style="${status.odd}?' color:#9460F7;' :'color:#F52FEF;'"
+								th:text="${user.id}"></td>
+							<td class="align-middle"
+								th:style="${status.odd}?' color:#9460F7;':'color:#F52FEF;' "
+								th:text="${user.username}"></td>
+							<td class="align-middle"
+								th:style="${status.odd}?' color:#9460F7;' :'color:#F52FEF;'"
+								th:text="${user.firstname}"></td>
+							<td class="align-middle"
+								th:style="${status.odd}?' color:#9460F7;' :'color:#F52FEF;'"
+								th:text="${user.lastname}"></td>
+							<td class="align-middle"
+								th:style="${status.odd}?' color:#9460F7;' :'color:#F52FEF;'"
+								th:text="${user.email}"></td>
+							<td><a
+								th:href="@{/admin/product-details/{id}(id=${user.id})}"
+								class="btn"><i class="fa fa-eye"></i></a></td>
+							<td><a th:href="@{/admin/edituser/{id}(id=${user.id})}"
+								class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a></td>
+							<td><a
+								th:href="@{/admin/deleteuserById/{id}(id=${user.id})}"
+								class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></td>
+
+							<!--    <td class="align-middle" th:text="${user.userpassword}"></td> -->
+						</tr>
+					</table>
+					<!-- <div class="custom-pagination">
+
+						<ul class="pagination">
+
+							<li th:if="${currentPage > 1}"><a
+								th:href="@{/userinfo(page=${currentPage - 1})}">Previous</a></li>
+
+							<li th:each="page:${#numbers.sequence(1, totalPages)}"><a
+								th:href="@{/userinfo(page=${page})}" th:text="${page}"
+								th:class="${currentPage == page} '?'active'"></a></li>
+
+							<li th:if="${currentPage <totalPages}"><a
+								th:href="@{/userinfo(page=${currentPage + 1})}">Next</a></li>
+						</ul>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="footer"></div>

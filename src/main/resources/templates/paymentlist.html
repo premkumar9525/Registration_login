@@ -1,0 +1,87 @@
+
+
+<div th:include="header"></div>
+
+<div class="breadcome-area">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="breadcome-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<div class="breadcomb-wp">
+								<div class="breadcomb-icon">
+									<i class="fa fa-home" style="font-size: 30px;"></i>
+								</div>
+								<div class="breadcomb-ctn">
+									<h2>Payment List</h2>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="product-status mg-b-30">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="product-status-wrap">
+					<table>
+						<tr>
+							<th>PaymentId:</th>
+							<th>FirstName:</th>
+							<th>LastName:</th>
+							<th>Full Name:</th>
+							<th>Card No:</th>
+							<th>Month:</th>
+							<th>Year:</th>
+							<th>CVC:</th>
+							<th> Card:</th>
+							<th> Duration:</th>
+							<th> Bank:</th>
+							<th> Acount No:</th>
+							<th>IFSC Code</th>
+							<th> Acount Holder Name:</th>
+							<th> Date:</th>
+							<th>Address:</th>
+							<th>PIN COD:</th>
+							<th>Country:</th>
+							<th>State:</th>
+							<th>City:</th>
+							<th>Mobile No:</th>
+						</tr>
+						<tr th:each="user:${paymenttinfo}">
+							<td class="align-middle" th:text="${user.paymentId}"></td>
+							<td class="align-middle" th:text="${user.firstName}"></td>
+							<td class="align-middle" th:text="${user.lastName}"></td>
+							<td class="align-middle" th:text="${user.fullName}"></td>
+							<td class="align-middle" th:text="${user.cardNo}"></td>
+							<td class="align-middle" th:text="${user.month}"></td>
+							<td class="align-middle" th:text="${user.year}"></td>
+							<td class="align-middle" th:text="${user.cvc}"></td>
+							<td class="align-middle" th:text="${user.selectCard}"></td>
+							<td class="align-middle" th:text="${user.selectDuration}"></td>
+							<td class="align-middle" th:text="${user.bankName}"></td>
+							<td class="align-middle" th:text="${user.acountNo}"></td>
+							<td class="align-middle" th:text="${user.ifscCode}"></td>
+							<td class="align-middle" th:text="${user.holderName}"></td>
+							<td class="align-middle" th:text="${user.date}"></td>
+							<td class="align-middle" th:text="${user.address}"></td>
+							<td class="align-middle" th:text="${user.pinCode}"></td>
+							<td class="align-middle" th:text="${user.selectContry}"></td>
+							<td class="align-middle" th:text="${user.state}"></td>
+							<td class="align-middle" th:text="${user.selectCity}"></td>
+							<td class="align-middle" th:text="${user.mobliNo}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="footer"></div>

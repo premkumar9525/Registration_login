@@ -1,0 +1,95 @@
+
+<div th:include="header"></div>
+
+<div class="breadcome-area">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="breadcome-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<div class="breadcomb-wp">
+								<div class="breadcomb-icon">
+									<i class="fa fa-home" style="font-size: 30px;"></i>
+								</div>
+								<div class="breadcomb-ctn">
+									<h2>Payment Page</h2>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<br> <br> <br>
+				<div class="form-group">
+					<input type="text" id="inputamount" class="form-control"
+						placeholder="Enter Amount" required>
+				</div>
+
+				<button type="button" class="btn btn-primary" id="rzp-button1"
+					onclick="myFunction()">Pay</button>
+				<br> <br> <br> <br>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>
+</div>
+
+<div th:include="footer"></div>
+
+
+<script>
+	var options = {
+
+		"key" : "rzp_test_Zrop3uzNtvPs1D", // Enter the Key ID generated from the Dashboard
+		"amount" : "5000",
+		"currency" : "INR",
+		"name" : "Prem kumar",
+		"description" : "Test Transaction",
+		"image" : "/profile/prem.jpeg",
+		"order_id" : "", //This is a sample Order ID. Pass the		`id` obtained in the response of Step 1
+		"handler" : function(response) {
+			alert(response.razorpay_payment_id);
+			alert(response.razorpay_order_id);
+			alert(response.razorpay_signature)
+		},
+		"prefill" : {
+			"name" : "Gaurav Kumar",
+			"email" : "gaurav.kumar@example.com",
+			"contact" : "9999999999"
+		},
+		"notes" : {
+			"address" : "Razorpay Corporate Office"
+		},
+		"theme" : {
+			"color" : "#3399cc"
+		}
+	};
+
+	var rzp1 = new Razorpay(options);
+	rzp1.on('payment.failed', function(response) {
+		alert(response.error.code);
+		alert(response.error.description);
+		alert(response.error.source);
+		alert(response.error.step);
+		alert(response.error.reason);
+		alert(response.error.metadata.order_id);
+		alert(response.error.metadata.payment_id);
+	});
+	document.getElementById('rzp-button1').onclick = function(e) {
+		rzp1.open();
+		e.preventDefault();
+	}
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+>
+
