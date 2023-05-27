@@ -104,6 +104,7 @@ public class UserController {
 			model.addAttribute("currentPage", page);
 //			model.addAttribute("totalPages", data.getTotalPages());
 			System.err.println(page);
+			System.out.println("Test");
 			
 		} else {
 			return "Record Not found";
